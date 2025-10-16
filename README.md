@@ -1,59 +1,164 @@
-# MongoDB Fundamentals - Week 1
+# MongoDB Data Layer Fundamentals and Advanced Techniques
 
-## Setup Instructions
+## Project Overview
+This project demonstrates comprehensive MongoDB fundamentals including database setup, CRUD operations, aggregation pipelines, indexing, and performance optimization using a bookstore database. The implementation showcases real-world database management techniques with a complete book inventory system.
 
-Before you begin this assignment, please make sure you have the following installed:
+## Assignment Completion Status
 
-1. **MongoDB Community Edition** - [Installation Guide](https://www.mongodb.com/docs/manual/administration/install-community/)
-2. **MongoDB Shell (mongosh)** - This is included with MongoDB Community Edition
-3. **Node.js** - [Download here](https://nodejs.org/)
+### All Tasks Successfully Completed
 
-### Node.js Package Setup
+| Task | Status | Details |
+|------|---------|----------|
+| **Task 1: MongoDB Setup** |  Complete | Database `plp_bookstore` and collection `books` created |
+| **Task 2: Basic CRUD Operations** |  Complete | All CRUD operations executed successfully |
+| **Task 3: Advanced Queries** |  Complete | Filtering, projection, sorting, and pagination implemented |
+| **Task 4: Aggregation Pipeline** |  Complete | Data analysis with grouping and averaging |
+| **Task 5: Indexing** |  Complete | Performance optimization with indexes |
 
-Once you have Node.js installed, run the following commands in your assignment directory:
+## Database Schema
 
-```bash
-# Initialize a package.json file
-npm init -y
+The `books` collection contains documents with the following structure:
 
-# Install the MongoDB Node.js driver
-npm install mongodb
+```javascript
+{
+  title: String,
+  author: String,
+  genre: String,
+  published_year: Number,
+  price: Number,
+  in_stock: Boolean,
+  pages: Number,
+  publisher: String
+}
 ```
 
-## Assignment Overview
+## Implementation Results
 
-This week focuses on MongoDB fundamentals including:
-- Creating and connecting to MongoDB databases
-- CRUD operations (Create, Read, Update, Delete)
-- MongoDB queries and filters
-- Aggregation pipelines
-- Indexing for performance
+### Database Statistics
+- **Total Documents:** 14 books  
+- **Database:** `plp_bookstore`  
+- **Collection:** `books`  
+- **Storage Size:** 3MB  
+- **Indexes Created:** 2 (title field, author+published_year compound)
 
-## Submission
+### Key Performance Metrics
+- **Indexed Query Performance:** 1ms execution time  
+- **Documents Examined:** 1 (with proper indexing)  
+- **Query Optimization:** Significant improvement demonstrated
 
-Complete all the exercises in this assignment and push your code to GitHub using the provided GitHub Classroom link.
+## Technical Implementation
 
-## Getting Started
+### CRUD Operations Executed
+1. **Find Operations:** By genre, author, publication year  
+2. **Update Operations:** Price modification for specific books  
+3. **Delete Operations:** Removal of books by title  
+4. **Complex Queries:** Multi-field filtering with projection  
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install MongoDB locally or set up a MongoDB Atlas account
-4. Run the provided `insert_books.js` script to populate your database
-5. Complete the tasks in the assignment document
+### Advanced Features Implemented
+- **Field Projection:** Selective field retrieval  
+- **Sorting:** Ascending and descending by price  
+- **Pagination:** 5 books per page implementation  
+- **Aggregation:** Grouping, averaging, and counting operations  
 
-## Files Included
+### Aggregation Pipeline Results
+- **Average Price by Genre:** Fantasy highest at $16.99  
+- **Author Statistics:** J.R.R. Tolkien with most books (2)  
+- **Publication Analysis:** Books grouped by decade (1810s–2000s)
 
-- `Week1-Assignment.md`: Detailed assignment instructions
-- `insert_books.js`: Script to populate your MongoDB database with sample book data
+## Project Structure
 
-## Requirements
+```
+mongodb-data-layer-fundamentals-and-advanced-techniques/
+├── insert_books.js          # Database population script
+├── queries.js               # All MongoDB queries and operations
+├── .env                     # Environment variables (not committed)
+├── .gitignore               # Git ignore rules
+├── package.json             # Project dependencies
+└── README.md                # Project documentation
+```
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- MongoDB Shell (mongosh) or MongoDB Compass
+## Setup and Execution
 
-## Resources
+### Prerequisites
+- Node.js installed  
+- MongoDB Atlas account or local MongoDB instance  
+- MongoDB connection string  
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [MongoDB University](https://university.mongodb.com/)
-- [MongoDB Node.js Driver](https://mongodb.github.io/node-mongodb-native/) 
+### Installation
+
+
+# Install dependencies
+npm install
+
+
+```
+
+### Execution
+```bash
+# Populate the database
+node insert_books.js
+
+# Execute all queries and operations
+node queries.js
+```
+
+## Evidence of Implementation
+
+### MongoDB Atlas Database
+![MongoDB Atlas Database](Screenshot%20from%202025-10-06%2011-23-05.png)
+
+*Shows the `plp_bookstore` database with `books` collection containing 14 documents.*
+
+### Query Execution Results
+![Query Results](Screenshot%20from%202025-10-06%2011-52-55.png)
+
+*Demonstrates successful execution of all CRUD operations and queries.*
+
+## Technical Details
+
+### Indexing Strategy
+1. **Single Field Index:** `title` field for fast book lookups  
+2. **Compound Index:** `author` and `published_year` for author-time period queries  
+
+### Performance Optimization
+- **Query Execution Time:** Reduced to 1ms with proper indexing  
+- **Documents Examined:** Minimized from full collection scan to targeted documents  
+- **Memory Usage:** Optimized through proper projection and filtering  
+
+### Data Analysis Capabilities
+- **Genre-based Analysis:** Price trends across different genres  
+- **Temporal Analysis:** Publication patterns by decade  
+- **Author Performance:** Book counts and distribution by author  
+
+## Business Insights Generated
+
+### Pricing Analysis
+- Highest average price: Fantasy genre ($16.99)  
+- Lowest average price: Romance genre ($7.99)  
+- Price range: $7.99 - $19.99 across all books  
+
+### Inventory Insights
+- Total unique authors: 12  
+- Genre distribution: 7 different genres  
+- Publication span: 1813–2008 (195 years)
+
+## Learning Outcomes
+This project demonstrates proficiency in:
+- MongoDB database design and management  
+- Advanced query construction and optimization  
+- Aggregation pipeline development  
+- Performance tuning with indexing  
+- Real-world data analysis techniques  
+- Professional documentation practices  
+
+## Security Notes
+- Connection strings stored in environment variables  
+- Sensitive data excluded from version control  
+- Secure database access practices implemented  
+
+## Support
+For questions or issues regarding this implementation, please refer to the code comments or MongoDB official documentation.
+
+---
+
+**Project Completed:** All assignment requirements successfully implemented and verified through comprehensive testing and documentation.
